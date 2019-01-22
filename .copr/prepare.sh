@@ -26,6 +26,8 @@ if [ ${OS_TEST} -eq 0 ]; then
     sed -i "s/${BR}/${NEWBR}/g" contrib/spec/podman.spec
 fi
 
+sed -i "s/BuildRequires: go-md2man//g" contrib/spec/podman.spec
+
 mkdir build/
 git archive --prefix "libpod-${COMMIT_SHORT}/" --format "tar.gz" HEAD -o "build/libpod-${COMMIT_SHORT}.tar.gz"
 git clone https://github.com/kubernetes-incubator/cri-o

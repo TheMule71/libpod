@@ -44,6 +44,10 @@ fi
 echo ${PKGS[*]}
 $pkg_manager install -y ${PKGS[*]}
 
+if [ ! -x "/go/bin/go-md2man" ]; then \
+    go get -u github.com/cpuguy83/go-md2man; \
+fi
+
 make -f .copr/Makefile
 rpmbuild --rebuild podman-*.src.rpm
 
